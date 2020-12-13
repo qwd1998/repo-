@@ -1,0 +1,14 @@
+server:
+  port: 10086
+
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka
+
+spring:
+  application:
+    name: itcast-eureka

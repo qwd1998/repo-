@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: service-consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+service-provider: #服务的提供方的服务id
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule  #负载均衡 随机的负载均衡
+
+feign:
+  hystrix:
+    enabled: true  #开启feign的熔断

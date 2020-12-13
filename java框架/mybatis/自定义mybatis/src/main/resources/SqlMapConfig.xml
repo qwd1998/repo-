@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--mybatis主配置文件-->
+<configuration>
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybastis?serverTimezone=GMT%2B8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--配置映射文件的位置-->
+    <!--注解使用mapper里用class-->
+    <mappers>
+        <!--<mapper resource="cn/itcast/dao/IUserDao.xml"></mapper>-->
+        <mapper class="cn.itcast.dao.IUserDao"></mapper>
+    </mappers>
+</configuration>

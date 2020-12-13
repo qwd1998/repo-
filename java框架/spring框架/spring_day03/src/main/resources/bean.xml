@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--配置数据库-->
+    <!--<bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource" scope="singleton">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/db3?serverTimezone=GMT%2B8"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>-->
+    <bean id="dateSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db3?serverTimezone=GMT%2B8"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+    <!--配置数据源-->
+
+    <!--配置Runner-->
+   <!-- <bean id="template" class="org.springframework.jdbc.core.JdbcTemplate" scope="prototype">
+        &lt;!&ndash;注入数据源&ndash;&gt;
+        <constructor-arg name="dataSource" ref="druidDataSo urce"></constructor-arg>
+    </bean>-->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner"></bean>
+
+    <!--配置代理proxy的service
+    <bean id="proxyAccountService" factory-bean="beanFactory" factory-method="getAccountService"></bean>
+    &lt;!&ndash;配置BeanFactory&ndash;&gt;
+    <bean id="beanFactory" class="cn.itcast.factory.BeanFactory">
+      <property name="accountService" ref="AccountService"></property>
+        <property name="manager" ref="manager"></property>
+    </bean>-->
+
+    <bean id="AccountService" class="cn.itcast.Service.impl.AccountServiceImpl3" scope="prototype">
+        <property name="accountDao" ref="AccountDao"></property>
+    </bean>
+
+    <!--配置事务管理器-->
+    <bean id="manager" class="cn.itcast.utils.TransactionManager">
+        <property name="connectionUtils" ref="connection"></property>
+    </bean>
+
+    <bean id="AccountDao" class="cn.itcast.dao.impl.IAccountDaoImpl" scope="prototype">
+        <property name="runner" ref="runner"></property>
+        <property name="connectionUtils" ref="connection"></property>
+    </bean>
+    
+    <!--配置ConnectionUtils-->
+    <bean id="connection" class="cn.itcast.utils.ConnectionUtils">
+        <property name="dataSource" ref="dateSource"></property>
+    </bean>
+
+    <!--配置aop-->
+    <aop:config>
+        <aop:pointcut id="pt1" expression="execution(* cn.itcast.Service.*.*(..))"/>
+        <!--配置切入面connection的-->
+        <!--配置切入面manager的-->
+        <aop:aspect id="manager" ref="manager">
+            <aop:before method="begin" pointcut-ref="pt1"></aop:before>
+            <aop:after-returning method="commit" pointcut-ref="pt1"></aop:after-returning>
+            <aop:after-throwing method="rollback" pointcut-ref="pt1"></aop:after-throwing>
+            <aop:after method="release" pointcut-ref="pt1"></aop:after>
+        </aop:aspect>
+    </aop:config>
+</beans>

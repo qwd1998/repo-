@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--mybatis主配置文件-->
+<configuration>
+    <!--配置文件的引用，resource是要配置文件在resources目录下，url则需要将文件拖入浏览器，获取file协议的路径才行
+        引用外部配置文件后，dataSource中的配置文件需要进行引用
+        <properties resource="">
+        </properties>
+
+        <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        </dataSource>
+    -->
+
+    <!--配置起别名的标签，type是指定实体类的全限定类名称，alias是别名，添加别名后，不区分大小写user，User，USER都可以-->
+    <typeAliases>
+        <!--<typeAlias type="cn.itcast.domain.User" alias="user"></typeAlias>-->
+
+        <!--name是用于指定配置包的别名，在这个包下所有的实体类都会注册别名，并且类名就是别名，不再区分大小写-->
+        <package name="cn.itcast.domain"></package>
+    </typeAliases>
+
+    <!--配置环境-->
+    <environments default="mysql">
+        <!--mysql配置文件-->
+        <environment id="mysql">
+            <!--配置事务类型-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--配置连接池-->
+            <dataSource type="POOLED">
+                <!--配置文件的4个-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybastis?serverTimezone=GMT%2B8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--映射配置文件-->
+    <mappers>
+       <!-- <mapper resource="cn/itcast/dao/IUserDao.xml"></mapper>-->
+        <!--url使用方法-->
+        <mapper url="file:///E:/java%E6%A1%86%E6%9E%B6/mybatis/mybatis_day02/src/main/resources/cn/itcast/dao/IUserDao.xml"></mapper>
+    </mappers>
+</configuration>

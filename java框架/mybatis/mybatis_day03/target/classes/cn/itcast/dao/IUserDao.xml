@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.dao.IUserDao">
+    <!--查找全部-->
+    <select id="findAll" resultType="User">
+        select *from user ;
+    </select>
+
+    <!--根据id查询该用户-->
+    <select id="findOne" parameterType="int" resultType="cn.itcast.domain.User">
+        select *from user where id = #{id};
+    </select>
+
+
+    <!--模糊查询-->
+    <select id="findLike" parameterType="String" resultType="cn.itcast.domain.User">
+        select *from user where username like #{username};
+    </select>
+
+
+    <!--查询类中的user-->
+    <select id="findz" parameterType="cn.itcast.domain.Vocd" resultType="cn.itcast.domain.User">
+        select * from user where username = #{user.username};
+    </select>
+
+    <!--根据条件查询用户
+    <select id="findUserByCondition" resultType="user" parameterType="user">
+        select *from user where 1 = 1
+        <if test="username!=null">
+            and username like #{username}
+        </if>
+        <if test="sex!=null">
+            and sex = #{sex}
+        </if>
+    </select>-->
+    <select id="findUserByCondition" resultType="user" parameterType="user">
+        select *from user
+        <where>
+            <if test="username!=null">
+                and username like #{username}
+            </if>
+
+            <if test="sex!=null">
+                and sex = #{sex}
+            </if>
+        </where>
+    </select>
+
+    <select id="findUserInIds" parameterType="vocd" resultType="user">
+        select *from user
+        <where>
+            <if test="ids!=null and ids.size()>0">
+                <foreach collection="ids" open="and id in (" close=")" item="id" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </select>
+</mapper>
+

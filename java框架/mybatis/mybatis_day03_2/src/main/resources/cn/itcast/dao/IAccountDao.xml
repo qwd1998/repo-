@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.dao.IAccountDao">
+    <!--对account进行封装-->
+    <resultMap id="accountType" type="account">
+        <!--配置主键部分-->
+        <id property="id" column="id"></id>
+        <!--配置非主键部分-->
+        <result property="uid" column="uid"></result>
+        <result property="money" column="money"></result>
+
+            <!--配置account中的user封装-->
+            <association property="user" column="uid" javaType="user" select="cn.itcast.dao.IUserDao.findOne">
+            </association>
+    </resultMap>
+    <!--查找全部-->
+    <select id="findAll" resultMap="accountType">
+        SELECT * from account
+    </select>
+
+    <select id="findByUid" resultType="account">
+        select * from account where uid = #{uid}
+    </select>
+
+
+
+
+</mapper>
+

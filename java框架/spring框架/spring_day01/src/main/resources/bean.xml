@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--把对象的创建交给spring来管理-->
+    <!--spring对bean的管理细节
+         一.创建bean的三种方式
+         二.bean对象的作用范围
+         三.bean对象的生命周期
+    -->
+    <!--创建bean对象的三种方式
+        1.使用默认构造函数创建
+            在spring的配置文件中使用bean标签，配置id和class属性后，且没有其他属性和标签时，
+            采用默认构造函数创建bean对象，如果没有默认构造函数，则不能创建
+            第一种方法
+            <bean id="Service" class="cn.itcast.service.impl.ServiceImpl"></bean>
+
+         2.使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器）
+            第二种方法
+            <bean id="BeanFactory" class="cn.itcast.factory.BeanFactory"></bean>
+            <bean id="Service" factory-bean="BeanFactory" factory-method="getService"></bean>
+
+         2.使用普通工厂中的静态方法创建对象（使用某个类中的静态方法创建对象，并存入spring容器）
+         <bean id="Service" class="cn.itcast.factory.StaticBeanFactory" factory-method="getService"></bean>
+    -->
+    <!--bean标签的作用范围
+        scope属性指定作用范围
+            singleton：单例 默认值
+            prototype：多例的
+            request：作用于web应用的请求范围
+            session：作用于web应用的会话范围
+            global—session：作用于集群环境的会话范围，如果不是集群则作用于web应用的会话范围
+
+
+    -->
+
+
+    <!--第一种方法-->
+    <bean id="accountDao" class="cn.itcast.dao.impl.IAccountDaoImpl"></bean>
+    <bean id="Service" class="cn.itcast.service.impl.ServiceImpl"></bean>
+   <!-- 第二种方法
+    <bean id="BeanFactory" class="cn.itcast.factory.BeanFactory"></bean>
+    <bean id="Service" factory-bean="BeanFactory" factory-method="getService"></bean>-->
+    <!--第三种方法-->
+    <!--<bean id="Service" class="cn.itcast.factory.StaticBeanFactory" factory-method="getService"></bean>-->
+
+
+</beans>

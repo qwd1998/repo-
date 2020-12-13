@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+<div id="app">
+    <input v-model="age" type="text"><br>
+    <h2 align="center">女生的年龄：{{age}}</h2><br>
+    <h2 align="center">姓名：{{name}}</h2><br>
+    <h2 align="center">罩杯：{{breast}}</h2><br>
+    <input type="button" @click="incr" value="年龄加一">
+    <input type="button" @click="decr" value="年龄减一">
+    <div align="center">
+        <input type="checkbox" v-model="language" value="柳岩">柳岩<br>
+        <input type="checkbox" v-model="language" value="杨幂">杨幂<br>
+        <input type="checkbox" v-model="language" value="张雨馨">张雨馨<br>
+        <input type="checkbox" v-model="language" value="范冰冰">范冰冰<br>
+        <hr>
+    </div>
+    <div align="center">
+        <select v-model="cc">
+            <option value="柳岩">柳岩</option>
+            <option value="杨幂">杨幂</option>
+            <option value="张雨馨">张雨馨</option>
+            <option value="范冰冰">范冰冰</option>
+        </select>
+    </div>
+    <ul>
+        <li v-for="user in users">{{user}}</li>
+    </ul>
+
+
+    <hr hegith="20px" color="red">
+    侍寝的人
+    <h2>我选择了--{{language.join(",")}}--侍寝</h2>
+    <h2>我选择了--{{cc}}--侍寝</h2>
+    <h2>
+        <ul>
+            <li v-for="(user,index) in users" :key="index">
+                侍寝人的基本信息{{index+1}}--{{user}}
+            </li>
+            <li v-for="(value,key,index) in user" :key="index">
+                侍寝人的基本信息: <span v-text="index+1"></span>--{{key}}--{{value}}
+            </li>
+        </ul>
+    </h2>
+
+
+</div>
+
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            name: "柳岩",
+            breast: "F",
+            color: "粉嫩",
+            age: 28,
+            language: ["范冰冰", "张雨馨", "杨幂", "柳岩"],
+            cc: [],
+            users: [
+                {name: "柳  岩", sex: "女", breast: "F"},
+                {name: "范冰冰", sex: "女", breast: "D"},
+                {name: "杨  幂", sex: "女", breast: "D"},
+                {name: "大  嫂", sex: "女", breast: "D"},
+                {name: "张馨予", sex: "女", breast: "E"}
+            ],
+            user: {name: "柳  岩", sex: "女", breast: "F"}
+        },
+        methods: {
+            incr() {
+                this.age++;
+            },
+            decr() {
+                this.age--;
+            }
+        },
+        created() {
+            this.name = "sm"
+        }
+    })
+
+
+</script>
+
+</body>
+</html>

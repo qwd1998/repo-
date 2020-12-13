@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--
+    xml的配置
+    <bean id="AccountService" class="cn.itcast.Service.impl.AccountServiceImpl" scope="singleton">
+        <property name="id" value="18"></property>
+        <property name="name" value="张三"></property>
+        <property name="birthday" ref="now"></property>
+    </bean>
+    <bean id="now" class="java.util.Date"></bean>
+
+
+
+    用于创建对象的
+        xml：<bean>标签
+        注解:@Component 把当前类对象存入spring容器中
+                属性：value 用于指定bean的id，如果不写，则是类名，第一个字母小写
+            @Controller 一般用表现层
+            @Service 一般用于业务层
+            @Repository 一般用于持久层
+            和上面的@Component注解一样
+
+    用于注入数据的
+        xml: set注入<bean>
+                         <property name=""></property>
+                    </bean>
+        注解：@Autowired
+            作用：自动按照类型注入，只要容器中有唯一的一个bean对象类型和要注入的变量类型匹配，就可以注入成功
+                 如果没有任何匹配，则报错
+                 如果不止一个，也会报错
+            出现位置：可以是变量上，也可以是方法上
+            @Qualifier
+            作用：在按照类型注入的基础上，再按照名称注入，在个类成员注入时，不能单独使用，但在给方法参数注入时，可以
+            属性：用于指定bean的id
+            上面只能封装bean对象，对于基本类型还需要
+            @value
+             属性：value 注入的值
+
+    用于改变作用范围的
+        xml:<bean scope="">
+        注解：@scope
+
+    和生命周期相关的
+        xml:<bean  init-method="" destroy-method="">
+        注解
+    -->
+
+
+    <!--配置数据库-->
+    <bean id="c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db3?serverTimezone=GMT%2B8"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+    <!--配置数据源-->
+
+    <!--配置Runner-->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner">
+        <constructor-arg name="ds" ref="c3p0"></constructor-arg>
+    </bean>
+
+    <!--添加依赖扫描-->
+    <context:component-scan base-package="cn.itcast"></context:component-scan>
+
+
+</beans>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6</title>
+</head>
+<script>
+
+    const person = {
+        name:"李四",
+        eat: function (food) {
+            console.log(this.name+"吃了"+food);
+        },
+        eat2:(food,sm)=>console.log(person.name+"吃了"+food+sm),
+        eat3(food){
+            console.log(this.name+food);
+        }
+    }
+    person.eat("狗屎0");
+    person.eat2("狗屎0","垃圾");
+    person.eat3("狗屎2");
+
+    const person2={
+        name:"德玛西亚",
+        age:28
+    }
+
+    function f1(a, b) {
+        b = b || 1;
+        console.log(a / b);
+    }
+
+    f1(50);
+    let f2 = (i, j = 5) => {
+        console.log(i / j);
+        const z = i + j;
+        console.log(z);
+
+    }
+    f2(50)
+
+    const f3=(pp)=>{
+        console.log(pp.name+"的年龄是： "+pp.age)
+    }
+
+    const f4=({name,age})=>{
+        console.log(name+"的年龄是： "+age)
+    }
+
+   x= (a,b)=>{
+        b=b||1;
+        console.log(a+b);
+   }
+   x(50,50)
+
+    f3(person2)
+    f4(person2)
+
+</script>
+
+<body>
+
+</body>
+</html>

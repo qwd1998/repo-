@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns: xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active {
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+<!--vue的html模板-->
+<div id="app">
+
+    <!--监听-->
+    监听<input type="text" v-model="search"><br>
+
+
+    <!--计算属性-->
+    方法-------{{birth()}}<br>
+    计算属性------{{birth1}}<br>
+
+    <!--v-bind用法-->
+    <input type="text" v-model="store"><br>
+    <input type="button" v-bind:class="{active:store>0}" value="加入购物车"><br>
+
+
+    <table align="center" width="100%" height="100%">
+        <tr align="center">
+            <td>
+                <!--双向绑定，v-model：数据模型-->
+                <input type="text" v-model="age"><br>
+                <!--定义一个事件，v-on：事件名=js表达式,也可以是一个方法名-->
+                <input type="button" value="点我啊" v-on:click="age++"><br>
+                <input type="button" value="点我增加" @click="incr">左键单击事件<br>  <!--v-on： 用@替代-->
+                <input type="button" value="点我减少" @click="decr">左键单击事件<br>  <!--v-on： 用@替代-->
+                <input type="text" v-model="age" @keyup.enter="sumbit">enter键盘按下提交<br>
+                <input type="button" value="点我增加" @contextMenu.prevent="incr">右键单击事件<br>  <!--取消右键的默认事件-->
+
+                <input type="checkbox" value="ios" v-model="language">ios<br>
+                <input type="checkbox" value="java" v-model="language">java<br>
+                <input type="checkbox" value="php" v-model="language">php<br>
+                您选择了<span v-text="language.join(',')"></span><br> <!--以逗号隔开，取消“”-->
+
+                <select v-model="zz">
+                    <option value="zz">zz1</option>
+                    <option>zz2</option>
+                    <option>zz3</option>
+                    <option>zz4</option>
+                    <option>zz5</option>
+                </select>
+                您选择了<span v-text="zz "></span><br>
+            </td>
+        </tr>
+    </table>
+    <input @click="show=!show" value="点我翻转" type="button"><br>
+    <span v-show="show">你看到我了啊,if</span><br>
+    <span v-if="show">你看到我了啊,show</span><br>
+    <hr>
+    <input @click="random=Math.random()" value="生成随机数" type="button">{{random}}<br>
+    <span v-if="random>0.75">你看到我了啊,大于0.75</span> <!--if和else-if之间不能写其他的-->
+    <span v-else-if="random>0.5">你看到我了啊,大于0.5</span>
+    <span v-else-if="random>0.25">你看到我了啊,大于0.25</span>
+    <span v-else-if="random>0.1">你看到我了啊,大于0.1</span>
+    <span v-else>你看到我了啊,小于0.1</span>
+
+    <hr>
+    <ul>
+        <li v-if="user.sex=='女'"
+            v-for="(user,index) in users">
+            <span v-text="index+1"></span>
+            <span v-text="user.name"></span>--
+            <span v-text="user.sex"></span>--
+            <span v-text="user.breast"></span>
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(value,key,index) in user" :key="index">
+            <span v-text="index+1"></span>--
+            <span v-text="key"></span>
+            <span v-text="value"></span>--
+        </li>
+    </ul>
+    <!--花括号，js表达式-->
+    <h1>Hello，我是<span v-text="name"></span>,年龄{{age}}</h1><br>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //初始化一个vue实例
+    const app = new Vue({
+        el: "#app", //element，选择器
+        data: {
+            //定义数据模型
+            name: "刘德华",
+            age: 28,
+            language: [],
+            zz: [],
+            users: [
+                {name: "柳  岩", sex: "女", breast: "F"},
+                {name: "范冰冰", sex: "女", breast: "D"},
+                {name: "杨  幂", sex: "女", breast: "D"},
+                {name: "大  嫂", sex: "女", breast: "D"},
+                {name: "张馨予", sex: "女", breast: "E"},
+                {name: "春  哥", sex: "男", breast: "A"},
+                {name: "毛俊", sex: "男", breast: "A"}
+            ],
+            user: {name: "柳  岩", sex: "女", breast: "F"},
+            show: true,
+            random: 0,
+            store: 0,
+            birthday: new Date().getTime(),
+            search: "",  //watch监听
+
+
+        },
+        //定义方法
+        methods: {
+            incr() {
+                //console.log(this);
+                this.age++;
+            },
+            decr() {
+                this.age--;
+            },
+            sumbit() {
+                console.log("提交表单了啊...")
+            },
+            birth() {
+                let date = new Date(this.birthday);
+                return date.getFullYear() + "年" + date.getMonth() + "月" + date.getDay() + "日"
+            }
+        },
+        computed: {  //计算属性
+            //里面定义方法，必须有返回值，调用和数据模型一样使用
+            birth1() {
+                const date = new Date(this.birthday);
+                return date.getFullYear() + "年" + date.getMonth() + "月" + date.getDay() + "日";
+            }
+        },
+        watch: {
+            //监听的方法名和监听的数据模型要一致
+            search(NewVal, OldVal) {
+                console.log(NewVal, OldVal)
+            }
+        },
+        created() {
+            //获取ajax数据
+            //this .name="周星驰";
+        }
+    })
+</script>
+
+</body>
+</html>

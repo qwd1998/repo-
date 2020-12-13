@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [07/Nov/2020:19:56:04 +0800] "GET /ssmfinally HTTP/1.1" 302 - http-bio-8888-exec-3 0
+0:0:0:0:0:0:0:1 - - [07/Nov/2020:19:56:04 +0800] "GET /ssmfinally/ HTTP/1.1" 500 2634 http-bio-8888-exec-4 598
+0:0:0:0:0:0:0:1 - - [07/Nov/2020:19:56:05 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8888-exec-5 0
+0:0:0:0:0:0:0:1 - - [07/Nov/2020:19:57:40 +0800] "GET /ssmfinally HTTP/1.1" 302 - http-bio-8888-exec-3 0
+0:0:0:0:0:0:0:1 - - [07/Nov/2020:19:57:41 +0800] "GET /ssmfinally/ HTTP/1.1" 500 2634 http-bio-8888-exec-5 535
+0:0:0:0:0:0:0:1 - - [07/Nov/2020:19:57:41 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8888-exec-4 0

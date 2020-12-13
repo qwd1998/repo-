@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <h3 align="center">{{num}}</h3>
+    <!--全局组件-->
+    <!--
+    父向子通信，自定义属性：数据类型
+    子向父通信，自定义方法：方法名
+    -->
+    <const :num1="num" :home1="home" :users1="users" :user1="user" @incr1="incr"></const>
+    <br>
+
+    <!--局部组件-->
+    <!-- <he></he><br>
+     <he></he><br>
+     <he></he><br>-->
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+
+<script>
+
+    //全局组件
+    Vue.component("const", {
+        /*        template: "<div>我滴老家，就在这个屯:{{home}}",*/
+        //template: "<div>我滴老家，就在这个屯:{{home1}}<br><button @click='num1++'>点我加一，{{num1}}<br></button></div>",
+
+        template: "<ul><li v-for='x in user1'>{{x}}</li><li v-for='user in users1'>{{user}}</li><button @click='incr11'>点我加一，{{num1}}<br></button></ul>",
+        /*data() {
+            return {
+                home: "山沟子",
+
+            }
+        }*/
+        //父组件向子组件通信
+        // props: ["num1", "home1"]
+        props: {
+            users1: {
+                type: Array,
+                default: [],
+                required: true
+            },
+            user1: {
+                type: String,
+                default: ""
+            },
+            num1: {
+                type: Number
+            }
+        },
+        methods: {
+            incr11() {
+                this.$emit("incr1")
+            }
+        }
+
+    })
+
+    //局部组件
+    const hello = {
+        template: "<button @click='num++'>点我加一，{{num}}</button>",
+        data() {
+            return {
+                num: 0,
+            }
+        }
+    }
+
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            num: 0,
+            home: "低调点",
+            users: [
+                {name: "柳  岩", sex: "女", breast: "F"},
+                {name: "范冰冰", sex: "女", breast: "D"},
+                {name: "杨  幂", sex: "女", breast: "D"},
+                {name: "大  嫂", sex: "女", breast: "D"},
+                {name: "张馨予", sex: "女", breast: "E"},
+                {name: "春  哥", sex: "男", breast: "A"},
+                {name: "毛俊", sex: "男", breast: "A"}
+            ],
+            user: {name: "柳  岩", sex: "女", breast: "F"},
+
+        },
+        components: {
+            //组件名和局部组件,引入局部组件
+            he: hello,
+        },
+        methods: {
+            incr() {
+                return this.num++;
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

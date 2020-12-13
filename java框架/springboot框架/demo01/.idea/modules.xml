@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-boot/1.iml" filepath="$PROJECT_DIR$/spring-boot/1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-service-provider/2.iml" filepath="$PROJECT_DIR$/itcast-service-provider/2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dysms-demo/dysms-demo.iml" filepath="$PROJECT_DIR$/dysms-demo/dysms-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/es6/es6.iml" filepath="$PROJECT_DIR$/es6/es6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-elasticsearch/itcast-elasticsearch.iml" filepath="$PROJECT_DIR$/itcast-elasticsearch/itcast-elasticsearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-eureka/itcast-eureka.iml" filepath="$PROJECT_DIR$/itcast-eureka/itcast-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-rabbitmq/itcast-rabbitmq.iml" filepath="$PROJECT_DIR$/itcast-rabbitmq/itcast-rabbitmq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-service-consumer/itcast-service-consumer.iml" filepath="$PROJECT_DIR$/itcast-service-consumer/itcast-service-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcat-zuul/itcat-zuul.iml" filepath="$PROJECT_DIR$/itcat-zuul/itcat-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot/spring-boot.iml" filepath="$PROJECT_DIR$/spring-boot/spring-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_实战/springboot_.iml" filepath="$PROJECT_DIR$/springboot_实战/springboot_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_实战/springboot_实战.iml" filepath="$PROJECT_DIR$/springboot_实战/springboot_实战.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_实战/springboot_实战1.iml" filepath="$PROJECT_DIR$/springboot_实战/springboot_实战1.iml" />
+    </modules>
+  </component>
+</project>
