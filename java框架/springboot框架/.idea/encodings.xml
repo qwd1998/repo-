@@ -3,5 +3,15 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/demo01/itcast-elasticsearch/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo01/itcast-elasticsearch/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo01/itcast-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo01/itcast-rabbitmq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo01/itcast-service-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo01/itcast-service-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo01/itcat-zuul/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo01/spring-boot/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo01/springboot_实战/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/untitled/itcast-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/untitled/itcast-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/untitled/itcast-provider/src/main/java" charset="UTF-8" />
   </component>
 </project>
