@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo01/dysms-demo/dysms-demo.iml" filepath="$PROJECT_DIR$/demo01/dysms-demo/dysms-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/es6/es6.iml" filepath="$PROJECT_DIR$/demo01/es6/es6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/untitled/itcast-consumer/itcast-consumer.iml" filepath="$PROJECT_DIR$/untitled/itcast-consumer/itcast-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/itcast-elasticsearch/itcast-elasticsearch.iml" filepath="$PROJECT_DIR$/demo01/itcast-elasticsearch/itcast-elasticsearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/itcast-eureka/itcast-eureka.iml" filepath="$PROJECT_DIR$/demo01/itcast-eureka/itcast-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/untitled/itcast-eureka/itcast-eureka (1).iml" filepath="$PROJECT_DIR$/untitled/itcast-eureka/itcast-eureka (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/untitled/itcast-provider/itcast-provider.iml" filepath="$PROJECT_DIR$/untitled/itcast-provider/itcast-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/itcast-rabbitmq/itcast-rabbitmq.iml" filepath="$PROJECT_DIR$/demo01/itcast-rabbitmq/itcast-rabbitmq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/itcast-service-consumer/itcast-service-consumer.iml" filepath="$PROJECT_DIR$/demo01/itcast-service-consumer/itcast-service-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/itcast-service-provider/itcast-service-provider.iml" filepath="$PROJECT_DIR$/demo01/itcast-service-provider/itcast-service-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/itcat-zuul/itcat-zuul.iml" filepath="$PROJECT_DIR$/demo01/itcat-zuul/itcat-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/spring-boot/spring-boot.iml" filepath="$PROJECT_DIR$/demo01/spring-boot/spring-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/springboot_实战/springboot_.iml" filepath="$PROJECT_DIR$/demo01/springboot_实战/springboot_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/springboot框架.iml" filepath="$PROJECT_DIR$/.idea/springboot框架.iml" />
+    </modules>
+  </component>
+</project>
