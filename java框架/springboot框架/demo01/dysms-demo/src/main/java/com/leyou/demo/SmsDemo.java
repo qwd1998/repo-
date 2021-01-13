@@ -57,6 +57,7 @@ public class SmsDemo {
         request.setMethod(MethodType.POST);
         //必填:待发送手机号
         request.setPhoneNumbers("随便一个手机号码都可以");
+
         //必填:短信签名-可在短信控制台中找到
         request.setSignName("自己注册的签名");
         //必填:短信模板-可在短信控制台中找到
